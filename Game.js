@@ -26,13 +26,13 @@ class Game{
             form.display();
         }
 
-        athlete1 = createSprite(100,200);
+        athlete1 = createSprite(50,100);
 
-        athlete2 = createSprite(300,200);
+        athlete2 = createSprite(50,250);
 
-        athlete3 = createSprite(500,200);
+        athlete3 = createSprite(50,400);
 
-        athlete4 = createSprite(700,200);
+        athlete4 = createSprite(50,550);
 
         athletes = [athlete1,athlete2,athlete3,athlete4];
         
@@ -48,39 +48,43 @@ class Game{
 
             var index = 0;
 
-            var x = 175;
-            var y;
+            var x = 50;
+            var y = 400;
 
             for (var plr in allPlayers){
                 index = index+1;
 
-                x = x+250;
+                y = y+180;
 
-                y = displayHeight - allPlayers[plr].distance;
+                x = displayWidth - allPlayers[plr].distance;
                 athletes[index-1].x = x;
                 athletes[index-1].y = y;
 
                 if(index===player.index){
-                    stroke(10);
-                    fill("red");
-                    ellipse(x,y,60,60);
+                    //stroke(10);
+                    //fill("red");
+                    //ellipse(x,y,60,60);
                     athletes[index-1].shapeColor = "red";
-                    camera.position.x = displayWidth/2;
-                    camera.position.y = cars[index-1].y;
+                    camera.position.y = athletes[index-1].y;
+                    camera.position.x = athletes[index-1].x;
                 }
             }
         }
 
-        if(keyIsDown(UP_ARROW) && player.index !== null){
+        if(keyIsDown(RIGHT_ARROW) && player.index !== null){
+            player.distance -=50;
+            player.update();
+        }
+        if(keyIsDown(LEFT_ARROW) && player.index !== null){
             player.distance +=50;
             player.update();
-          }
+        }
       
-          if(player.distance>5000){
+          if(player.distance==-4000){
             gameState = 2;
             player.rank+=1;
             Player.updateCarsAtEnd(player.rank);
           }
-          drawSprites();
+         drawSprites();
     }
 }
