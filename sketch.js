@@ -1,6 +1,7 @@
 var canvas, backgroundImage;
 var athlete1,athlete2,athlete3,athlete4;
 var athletes;
+var track;
 
 var gameState = 0;
 var playerCount;
@@ -10,8 +11,13 @@ var database;
 
 var form,player,game;
 
+function preload(){
+  athlete_img = loadImage("athlete1.png");
+  track = loadImage("track.png");
+}
+
 function setup() {
-  canvas = createCanvas(displayWidth-20,displayHeight);
+  canvas = createCanvas(displayWidth,displayHeight - 200);
   database = firebase.database();
   game = new Game();
   game.getState();

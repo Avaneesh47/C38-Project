@@ -26,13 +26,21 @@ class Game{
             form.display();
         }
 
-        athlete1 = createSprite(50,100);
+        athlete1 = createSprite(50,200);
+        athlete1.addImage("athlete1",athlete_img);
+        athlete1.scale = 0.5;
 
-        athlete2 = createSprite(50,250);
+        athlete2 = createSprite(50,350);
+        athlete2.addImage("athlete2",athlete_img);
+        athlete2.scale = 0.5;
 
-        athlete3 = createSprite(50,400);
+        athlete3 = createSprite(50,500);
+        athlete3.addImage("athlete3",athlete_img);
+        athlete3.scale = 0.5;
 
-        athlete4 = createSprite(50,550);
+        athlete4 = createSprite(50,650);
+        athlete4.addImage("athlete4",athlete_img);
+        athlete4.scale = 0.5;
 
         athletes = [athlete1,athlete2,athlete3,athlete4];
         
@@ -40,11 +48,12 @@ class Game{
 
     play(){
         form.hide();
-        Player.getPlayerInfo;
+        Player.getPlayerInfo();
         player.getCarsAtEnd();
 
         if(allPlayers !== undefined){
             background(198,135,103);
+            image(track,0,-displayHeight*4,displayWidth,displayHeight*6);
 
             var index = 0;
 
